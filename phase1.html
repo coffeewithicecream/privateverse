@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Run JavaScript</title>
+</head>
+<body>
+
+<script>
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function sendDeleteRequest(row, col) {
+  fetch('https://challenge.crossmint.com/api/polyanets', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      candidateId: "5a1a4b3a-dba0-4857-9d06-a6b628e6b2f2",
+      row: row,
+      column: col
+    })
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+}
+
+function sendPostRequest(row, col) {
+  fetch('https://challenge.crossmint.com/api/polyanets', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      candidateId: "5a1a4b3a-dba0-4857-9d06-a6b628e6b2f2",
+      row: row,
+      column: col
+    })
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+}
+
+// Async function to loop with a delay in each iteration
+async function loopWithDelay() {
+  // Seconds to wait before the next iteration since a rate limit exists
+  const requestDelaySecs = 5;
+
+  const arraySize = 10;
+  const pivot = 2;
+  for (let i = pivot; i <= arraySize-pivot; i++) {
+    sendPostRequest(i, i);
+    sendPostRequest(i, arraySize-i);
+    await sleep(requestDelaySecs * 1000);
+  }
+  console.log("All iterations complete!");
+}
+
+loopWithDelay();
+
+</script>
+
+</body>
+</html>
+
+
