@@ -111,7 +111,7 @@ This project uses RSpec for testing. To run the tests, follow these steps:
    ```
 
 ## Architecture
-![Create Megaverse Arch](ClassDiagram.jpg)
+<img src="ClassDiagram.jpg" alt="Your image title" width="400"/>
 
 Megaverse is created by 3 different object classes Polyanets, Soloons and Comeths,
 all are based on the Megaverse Entity that sends the respective creation requests to the destinations.
