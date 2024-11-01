@@ -1,0 +1,10 @@
+
+source 'https://rubygems.org'
+
+# Specify Ruby version
+ruby '3.2.1' # or your preferred Ruby version
+
+# Add RSpec for testing
+group :development, :test do
+  gem 'rspec'
+end
